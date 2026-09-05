@@ -67,18 +67,43 @@ class HomeAnnouncer:
             print("https://rhasspy.github.io/piper-samples/")
             sys.exit(1)
     
+    def _chime(self) -> None:
+        """Play a brief attention beep using the system's built-in sounds."""
+        if sys.platform == "darwin":
+            # macOS: use afplay with a built-in system sound
+            for sound in ("/System/Library/Sounds/Ping.aiff",
+                          "/System/Library/Sounds/Tink.aiff"):
+                if Path(sound).exists():
+                    subprocess.run(["afplay", sound], check=False)
+                    return
+            # Fallback: terminal bell
+            print("\a", end="", flush=True)
+        elif sys.platform == "linux":
+            # Try paplay with a freedesktop sound, fall back to terminal bell
+            try:
+                for sound in ("/usr/share/sounds/freedesktop/stereo/bell.oga",
+                              "/usr/share/sounds/ubuntu/stereo/bell.ogg"):
+                    if Path(sound).exists():
+                        subprocess.run(["paplay", sound], check=False,
+                                       stderr=subprocess.DEVNULL)
+                        return
+            except FileNotFoundError:
+                pass
+            print("\a", end="", flush=True)
+        else:
+            print("\a", end="", flush=True)
+
     def speak(self, text: str, urgent: bool = False, chime: bool = False):
         """
         Announce text through speakers.
-        
+
         Args:
             text: The message to announce
             urgent: If True, repeat the message twice
-            chime: If True, add an attention sound (placeholder)
+            chime: If True, play an attention sound before speaking
         """
         if chime:
-            # In a real setup, you'd play an actual chime sound here
-            print("[chime]")
+            self._chime()
         
         # Generate speech
         with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as f:
