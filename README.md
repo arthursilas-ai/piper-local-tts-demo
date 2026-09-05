@@ -6,6 +6,7 @@ Run [Piper](https://github.com/rhasspy/piper) — a fast, offline TTS engine —
 
 [![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/)
+[![pypi](https://img.shields.io/pypi/v/solystopia-piper-tts.svg)](https://pypi.org/project/solystopia-piper-tts/)
 
 ---
 
@@ -24,10 +25,10 @@ This is the difference between renting a voice and owning one.
 
 ## Quick start
 
-No repo to clone — install straight from GitHub:
+No repo to clone — install from PyPI:
 
 ```bash
-pip install git+https://github.com/arthursilas-ai/piper-local-tts-demo.git
+pip install solystopia-piper-tts
 curl -sO https://raw.githubusercontent.com/arthursilas-ai/piper-local-tts-demo/main/download_voice.sh && bash download_voice.sh
 piper-speak "The future belongs to those who own their tools."
 ```
