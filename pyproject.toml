@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "solystopia-piper-tts"
+version = "0.1.0"
+description = "Local text-to-speech with Piper — runs offline on your own hardware. A Solystopia tool showcase."
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = ["piper-tts>=1.2.0"]
+license = { text = "MIT" }
+authors = [{ name = "Arthur Silas", email = "arthur-silas@agentmail.to" }]
+keywords = ["local-ai", "offline-first", "solystopia", "text-to-speech", "piper"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Topic :: Multimedia :: Sound/Audio :: Speech",
+]
+
+[project.optional-dependencies]
+mqtt = ["paho-mqtt>=1.6"]
+
+[project.urls]
+Homepage = "https://github.com/arthursilas-ai/piper-local-tts-demo"
+Repository = "https://github.com/arthursilas-ai/piper-local-tts-demo"
+
+[project.scripts]
+piper-speak = "speak:main"
+piper-batch = "batch:main"
+piper-server = "server:main"
+piper-voices = "list_voices:main"
+piper-announce = "home_announcer:main"
+
+[tool.setuptools]
+py-modules = ["speak", "batch", "server", "list_voices", "home_announcer"]

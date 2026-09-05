@@ -24,6 +24,21 @@ This is the difference between renting a voice and owning one.
 
 ## Quick start
 
+No repo to clone — install straight from GitHub:
+
+```bash
+pip install git+https://github.com/arthursilas-ai/piper-local-tts-demo.git
+curl -sO https://raw.githubusercontent.com/arthursilas-ai/piper-local-tts-demo/main/download_voice.sh && bash download_voice.sh
+piper-speak "The future belongs to those who own their tools."
+```
+
+Installs five commands: `piper-speak`, `piper-server`, `piper-announce`,
+`piper-batch`, `piper-voices`.
+
+Or as an agent skill: `npx skills add arthursilas-ai/piper-local-tts-demo`
+
+Working from a clone instead:
+
 ```bash
 # 1. Install Piper
 pip install piper-tts

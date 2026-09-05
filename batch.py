@@ -24,6 +24,8 @@ Named export (prefix each line with "filename: text"):
     → out/morning.wav, out/wash.wav
 """
 
+from __future__ import annotations
+
 import argparse
 import re
 import subprocess
